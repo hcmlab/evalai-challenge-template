@@ -9,17 +9,29 @@ def get_curr_working_dir():
 
 
 def run():
+    # INFO: When running this script set working directory to root directory of repository
+
+    # Submission file name (placed in root directory)
+    submission_file = ""
+
+    # Annotation file name used to evaluate submission (from annotations subdirectory)
+    anno_file = ""
+
+    # Set the challenge phase codename to be tested
+    challenge_phase = ""
+
     current_working_directory = get_curr_working_dir()
     sys.path.append("{}".format(current_working_directory))
     sys.path.append("{}/challenge_data/challenge_1".format(current_working_directory))
 
     challenge_id = 1
-    challenge_phase = "test"  # Add the challenge phase codename to be tested
-    annotation_file_path = "{}/annotations/test_annotations_testsplit.json".format(
-        current_working_directory
+    annotation_file_path = "{}/annotations/{}".format(
+        current_working_directory,
+        anno_file
     )  # Add the test annotation file path
-    user_submission_file_path = "{}/submission.json".format(
-        current_working_directory
+    user_submission_file_path = "{}/{}".format(
+        current_working_directory,
+        submission_file
     )  # Add the sample submission file path
 
     CHALLENGE_IMPORT_STRING = "challenge_data.challenge_1"

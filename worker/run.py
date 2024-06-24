@@ -1,6 +1,7 @@
 import importlib
 import os
 import sys
+import evaluation_script as eval_script
 
 
 def get_curr_working_dir():
@@ -35,10 +36,10 @@ def run():
     )  # Add the sample submission file path
 
     CHALLENGE_IMPORT_STRING = "challenge_data.challenge_1"
-    challenge_module = importlib.import_module(CHALLENGE_IMPORT_STRING)
+    #challenge_module = importlib.import_module(CHALLENGE_IMPORT_STRING)
 
     EVALUATION_SCRIPTS = {}
-    EVALUATION_SCRIPTS[challenge_id] = challenge_module
+    #EVALUATION_SCRIPTS[challenge_id] = challenge_module
     print("Trying to evaluate")
     submission_metadata = {
         "status": u"running",
@@ -60,12 +61,20 @@ def run():
         "id": 123,
         "submitted_at": u"2017-03-20T19:22:03.880652Z",
     }
+    eval_script.evaluate(
+        annotation_file_path,
+        user_submission_file_path,
+        challenge_phase,
+        submission_metadata=submission_metadata,
+    )
+    '''
     EVALUATION_SCRIPTS[challenge_id].evaluate(
         annotation_file_path,
         user_submission_file_path,
         challenge_phase,
         submission_metadata=submission_metadata,
     )
+    '''
     print("Evaluated Successfully!")
 
 
